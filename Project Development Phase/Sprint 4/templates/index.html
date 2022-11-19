@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css"
+        integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$(".Layout").toggle();
+            //$(".chat_off").toggle();
+
+            //$(".chat_on").click(function () {
+            //  $(".Layout").toggle();
+            // $(".chat_on").hide(300);
+            //$(".chat_off").show(300);
+            //});
+
+            //$(".chat_off").click(function () {
+            //  $(".Layout").hide(300);
+            // $("chat_off").hide(300);
+            //$(".chat_on").show(300);
+            //});
+            $(".Layout").toggle();
+            $(".chat_off").toggle();
+
+            $(".chat_on").click(function () {
+                $(".Layout").toggle();
+                $(".chat_on").toggle();
+                $(".chat_off").toggle();
+            });
+
+            $(".chat_off").click(function () {
+                $(".Layout").toggle();
+                $("chat_off").toggle();
+                $(".chat_on").toggle();
+            });
+        });
+    </script>
+    <title>loan app</title>
+    <style>
+        body {
+            background-image: url('static/pig.gif');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container main">
+        <div class="container col-md-8">
+            <br>
+
+            <br>
+            <br>
+            <center>
+                <h1 class='main_heading text-light' style="font-size : 5em;"> Loan Approval Prediction Model</h1>
+            </center>
+            <br><br>
+            <form class="well form-horizontal opacity-75" action="/predict" method="post" id="contact_form"
+                style="font-size : 2em;">
+                <!-- GENDER -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Gender</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="gender1" id="gender1" value="1" /> Male
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="gender1" id="gender1" value="0" /> Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- MARRIED -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Marital Status</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="marital_status1" id="marital_status1" value="1" /> Married
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="marital_status1" id="marital_status1" value="0" /> Unmarried
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEPENDENTS -->
+                <div class="form-group opacity-100">
+                    <div class="col-sm-10">
+                        <input style="font-size: 1em;" class="form-control form-control-lg" type="text"
+                            name="dependents" placeholder="Number of dependents" required="required" />
+                    </div>
+                </div>
+                <!-- EDUCATION -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Education status</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="education_status1" id="education_status1" value="1" />
+                                Graduate
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="education_status1" id="education_status1" value="0" /> not
+                                Graduate
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SELF EMPLOYED -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Are you self-employed?</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="self_employed1" id="self_employed1" value="1" />Yes
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="self_employed1" id="self_employed1" value="0" /> No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- APPLICANT INCOME -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input style="font-size: 1em;" class="form-control form-control-lg" type="text"
+                            name="ApplicantIncome" placeholder="Your Income" required="required" />
+                    </div>
+                </div>
+                <!-- COAPPLICANT INCOME -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input style="font-size: 1em;" class="form-control form-control-lg" type="text"
+                            name="CoapplicantIncome" placeholder="Co-applicant Income" required="required" />
+                    </div>
+                </div>
+                <!-- LOAN AMOUNT -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input style="font-size: 1em;" class="form-control form-control-lg" type="text"
+                            name="LoanAmount" placeholder="Loan Amount" required="required" />
+                    </div>
+                </div>
+
+                <!-- LOAN AMOUNT TERM  -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <!-- <select class="form-control" type="number" name="Loan_Amount_Term" required="required">
+                        <option value="0">loan term:</option>
+                        <option value="240">6 months</option>
+                        <option value="360">12 months</option>
+                    </select> -->
+                        <input style="font-size: 1em;" class="form-control form-control-lg" type="text"
+                            name="Loan_Amount_Term" placeholder="Loan Amount Term (in months)" required="required" />
+                    </div>
+                </div>
+                <!-- CREDIT HISTORY -->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Do you have credit history?</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="credit_history1" id="credit_history1" value="1" />Yes
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="credit_history1" id="credit_history1" value="0" /> No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROPERTY -->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Property Area</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="property_area1" id="property_area1" value="2" />Urban
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="property_area1" id="property_area1" value="1" /> Semiurban
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="property_area1" id="property_area1" value="0" /> Rural
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3 btn btn-primary btn-lg">
+                        <button type="submit" class="button btn btn-default text-light">PREDICT</button>
+
+                    </div>
+                </div>
+            </form>
+
+            <center>
+                <b>
+                    <div class="card bg-warning">
+                        <div class="card-body">
+                            <h2 style="color:#FF0000" ;>{{ prediction_text}}</h2>
+                        </div>
+                    </div>
+
+                </b>
+            </center>
+
+
+
+            <h2 class="result"></h2>
+        </div>
+
+        <div class="d-flex justify-content-end col-md-4">
+
+            <iframe allow="microphone;" width="350" height="430"
+                src="https://console.dialogflow.com/api-client/demo/embedded/1723de40-cd89-4826-a0d9-926be1623da7"
+                class="Layout">
+            </iframe>
+        </div>
+        <div class="chat_on">
+            <span class="chat_on_icon"><i class="fa fa-comments" aria-hidden="true"></i></span>
+        </div>
+        <div class="chat_off">
+            <span class="chat_off_icon"><i class="fa fa-comments" aria-hidden="true"></i></span>
+        </div>
+    </div>
+
+</body>
+
+</html>
