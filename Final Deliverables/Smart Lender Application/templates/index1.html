@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="static/style.css"> -->
+    <title>loan app</title>
+    <!-- <style>
+        input {
+            margin: .4rem;
+        }
+    </style> -->
+</head>
+
+<body>
+
+<iframe
+    allow="microphone;"
+    width="350"
+    height="430"
+    src="https://console.dialogflow.com/api-client/demo/embedded/1723de40-cd89-4826-a0d9-926be1623da7">
+</iframe>
+    <div class="container main">
+        <div class="jumbotron" id="holder">
+            <br>
+            <center><b>
+                    <h2 style="color:#FF0000" ;>{{ prediction_text}}</h2>
+                </b></center>
+            <br>
+            <br>
+            <center>
+                <h1 class='main_heading'> Loan Approval Prediction Model</h1>
+            </center>
+            <form class="form-horizontal" action="/predict" method="post">
+                <!-- GENDER -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <!-- <select class="form-control" type="number" name="Gender" required="required">
+                            <option value="0">Gender</option>
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                        </select> -->
+                        <p>
+                            Gender
+                            <input class="form-check-input" type="radio" name="gender1" id="gender1" value="1">
+                            <label class="form-check-label" for="gender1">
+                                Male
+                            </label>
+                            <input class="form-check-input" type="radio" name="gender1" id="gender1" value="0">
+                            <label class="form-check-label" for="gender1">
+                                Female
+                            </label>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MARRIED -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <!-- <select class="form-control" type="number" name="Married" required="required">
+                            <option value="0">Married</option>
+                            <option value="1">YES</option>
+                            <option value="0">NO</option>
+                        </select> -->
+                        <p>
+                            Marital Status:
+                            <input class="form-check-input" type="radio" name="marital_status1" id="marital_status1"
+                                value="1">
+                            <label class="form-check-label" for="marital_status1">
+                                Married
+                            </label>
+                            <input class="form-check-input" type="radio" name="marital_status1" id="marital_status1"
+                                value="0">
+                            <label class="form-check-label" for="marital_status1">
+                                Unmarried
+                            </label>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DEPENDENTS -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="dependents" placeholder="Number of dependents"
+                            required="required" />
+                    </div>
+                </div>
+
+                <!-- EDUCATION -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <!-- <select class="form-control" type="number" name="Education" required="required">
+                            <option value="0">Education</option>
+                            <option value="1">Graduate</option>
+                            <option value="0">Not Graduate</option>
+                        </select> -->
+                        <p>
+                            Education status:
+                            <input class="form-check-input" type="radio" name="education_status1" id="education_status1"
+                                value="1">
+                            <label class="form-check-label" for="education_status1">
+                                Graduate
+                            </label>
+                            <input class="form-check-input" type="radio" name="education_status1" id="education_status1"
+                                value="0">
+                            <label class="form-check-label" for="education_status1">
+                                Not Graduate
+                            </label>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SELF EMPLOYED -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <!-- <select class="form-control" type="number" name="Self_Employed" required="required">
+                            <option value="0">Self Employed</option>
+                            <option value="1">YES</option>
+                            <option value="0">NO</option>
+                        </select> -->
+                        <!-- <fieldset> -->
+                        <p>
+                            Are you self-employed?
+                            <input class="form-check-input" type="radio" name="self_employed1" id="self_employed1"
+                                value="1">
+                            <label class="form-check-label" for="self_employed1">
+                                YES
+                            </label>
+                            <input class="form-check-input" type="radio" name="self_employed1" id="self_employed1"
+                                value="0">
+                            <label class="form-check-label" for="self_employed1">
+                                NO
+                            </label>
+                        </p>
+
+                        <!-- </fieldset> -->
+
+                    </div>
+                </div>
+
+                <!-- APPLICANT INCOME -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="ApplicantIncome" placeholder="Your Income"
+                            required="required" />
+                    </div>
+                </div>
+
+
+                <!-- COAPPLICANT INCOME -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="CoapplicantIncome"
+                            placeholder="Co-applicant Income" required="required" />
+                    </div>
+                </div>
+
+                <!-- LOAN AMOUNT -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="LoanAmount" placeholder="Loan Amount"
+                            required="required" />
+                    </div>
+                </div>
+
+                <!-- LOAN AMOUNT TERM  -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <!-- <select class="form-control" type="number" name="Loan_Amount_Term" required="required">
+                            <option value="0">loan term:</option>
+                            <option value="240">6 months</option>
+                            <option value="360">12 months</option>
+                        </select> -->
+                        <input class="form-control" type="text" name="Loan_Amount_Term"
+                            placeholder="Loan Amount Term (in months)" required="required" />
+                    </div>
+                </div>
+
+                <!-- CREDIT HISTORY -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <!-- <select class="form-control" type="number" name="Credit_History" required="required">
+                            <option value="0">Credit History</option>
+                            <option value="1">YES</option>
+                            <option value="0">NO</option>
+                        </select> -->
+
+                        <p>
+                            Do you have credit history?
+                            <input class="form-check-input" type="radio" name="credit_history1" id="credit_history1"
+                                value="1">
+                            <label class="form-check-label" for="credit_history1">
+                                YES
+                            </label>
+                            <input class="form-check-input" type="radio" name="credit_history1" id="credit_history1"
+                                value="0">
+                            <label class="form-check-label" for="credit_history1">
+                                NO
+                            </label>
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!-- PROPERTY -->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <!-- <select class="form-control" type="number" name="Property_Area" required="required">
+                            <option value="0">Property Area</option>
+                            <option value="2">Urban</option>
+                            <option value="1">Semiurban</option>
+                            <option value="0">Rural</option>
+                        </select> -->
+
+                        <p>
+                            Property Area:
+                            <input class="form-check-input" type="radio" name="property_area1" id="property_area1"
+                                value="2">
+                            <label class="form-check-label" for="property_area1">
+                                Urban
+                            </label>
+                            <input class="form-check-input" type="radio" name="property_area1" id="property_area1"
+                                value="1">
+                            <label class="form-check-label" for="property_area1">
+                                Semiurban
+                            </label>
+                            <input class="form-check-input" type="radio" name="property_area1" id="property_area1"
+                                value="0">
+                            <label class="form-check-label" for="property_area1">
+                                Rural
+                            </label>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <center><button type="submit" class="button btn btn-default">PREDICT</button>
+                            <center />
+                    </div>
+                </div>
+            </form>
+
+
+
+            <h2 class="result"></h2>
+        </div>
+    </div>
+
+</body>
+
+</html>
